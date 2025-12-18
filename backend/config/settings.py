@@ -1,15 +1,22 @@
 # config/settings.py
-
+import os
 from pathlib import Path
+
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='your-secret-key-for-development')
 
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# 允許的主機
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.zeabur.app',  # 允許所有 Zeabur 子網域
+    config('ALLOWED_HOST', default=''),
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -34,6 +41,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← 加在這裡
     'corsheaders.middleware.CorsMiddleware',  # 要放在最前面
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,6 +129,29 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    config('FRONTEND_URL', default='http://localhost:3000'),
 ]
 
-CORS_ALLOW_CREDENTIALS = True
+# 如果使用 Zeabur 的 PostgreSQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# 如果有設定 DATABASE_URL 環境變數，則使用它（PostgreSQL）
+import dj_database_url
+
+if config('DATABASE_URL', default=None):
+    DATABASES['default'] = dj_database_url.parse(config('DATABASE_URL'))
+
+# Static files
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

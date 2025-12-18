@@ -25,9 +25,10 @@ export const apiClient = async (
 ) => {
   const token = getToken();
 
-  const headers: HeadersInit = {
+  // 使用 Record 類型
+  const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    ...options.headers,
+    ...(options.headers as Record<string, string>),
   };
 
   if (token) {

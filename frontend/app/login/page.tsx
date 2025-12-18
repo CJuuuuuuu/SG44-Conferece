@@ -19,8 +19,9 @@ export default function LoginPage() {
     try {
       await authAPI.login(email, password);
       router.push("/dashboard");
-    } catch (err: any) {
-      setError(err.message || "登入失敗");
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "登入失敗";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

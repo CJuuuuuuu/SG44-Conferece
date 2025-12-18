@@ -1,7 +1,20 @@
 "use client";
 import { ConferenceInfo, NewsItem, TimelineEvent, Topic } from "./types";
 
-const serverData = (window as any).WAGTAIL_DATA;
+// 擴展 Window 介面
+declare global {
+  interface Window {
+    WAGTAIL_DATA?: {
+      info?: ConferenceInfo;
+      news?: NewsItem[];
+      timeline?: TimelineEvent[];
+    };
+  }
+}
+
+// 安全地取得資料
+const serverData =
+  typeof window !== "undefined" ? window.WAGTAIL_DATA : undefined;
 
 export const CONFERENCE_INFO: ConferenceInfo = serverData?.info || {
   title: "第四十四屆測量及空間資訊研討會",
