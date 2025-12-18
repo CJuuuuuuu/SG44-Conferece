@@ -1,3 +1,4 @@
+"use client";
 import { TOPICS_DATA } from "@/lib/constants";
 import * as Icons from "lucide-react";
 import React from "react";

@@ -1,3 +1,4 @@
+"use client";
 import { CONFERENCE_INFO } from "@/lib/constants";
 import { Calendar, MapPin } from "lucide-react";
 import React from "react";

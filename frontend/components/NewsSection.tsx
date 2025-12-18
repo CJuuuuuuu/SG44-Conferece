@@ -1,3 +1,4 @@
+"use client";
 import { NEWS_DATA } from "@/lib/constants";
 import { NewsItem } from "@/lib/types";
 import { ChevronRight, FileText, Mail, Phone, X } from "lucide-react";

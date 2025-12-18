@@ -1,5 +1,5 @@
-
-import { NewsItem, TimelineEvent, Topic, ConferenceInfo } from './types';
+"use client";
+import { ConferenceInfo, NewsItem, TimelineEvent, Topic } from "./types";
 
 const serverData = (window as any).WAGTAIL_DATA;
 
@@ -14,11 +14,11 @@ export const CONFERENCE_INFO: ConferenceInfo = serverData?.info || {
 };
 
 export const NEWS_DATA: NewsItem[] = serverData?.news || [
-  { 
-    id: 1, 
-    date: "114-12-15", 
-    category: "重要公告", 
-    title: "第四十四屆測量與空間資訊研討會 ─ 第一次籌備會通知", 
+  {
+    id: 1,
+    date: "114-12-15",
+    category: "重要公告",
+    title: "第四十四屆測量與空間資訊研討會 ─ 第一次籌備會通知",
     content: `第四十四屆測量與空間資訊研討會
 第一次籌備會通知
 
@@ -47,8 +47,8 @@ E-mail：sg44@nccu.edu.tw
 三、聯絡方式
     若有任何問題，請透過以下方式聯繫：
     • E-mail：sg44@nccu.edu.tw（李泱儒 博士生）
-    • 電話：02-2939-3091 分機 50641（蕭文斌 行政專員）`
-  }
+    • 電話：02-2939-3091 分機 50641（蕭文斌 行政專員）`,
+  },
 ];
 
 export const TIMELINE_DATA: TimelineEvent[] = serverData?.timeline || [
@@ -60,16 +60,66 @@ export const TIMELINE_DATA: TimelineEvent[] = serverData?.timeline || [
 ];
 
 export const TOPICS_DATA: Topic[] = [
-  { id: 't1', title: '大地測量與導航技術', description: '衛星定位、重力測量、導航演算法與應用。', iconName: 'Map' },
-  { id: 't2', title: '車載測繪與室內定位', description: '行動測繪系統(MMS)、室內圖資建置與定位技術。', iconName: 'Zap' },
-  { id: 't3', title: '無人載具與災害調查', description: 'UAV 應用於地形監測、災情判別與風險管理。', iconName: 'Shield' },
-  { id: 't4', title: '攝影測量與測繪管理', description: '數位攝影測量、影像匹配與測繪法規標準管理。', iconName: 'Database' },
-  { id: 't5', title: '智慧科技與跨域應用', description: '空間資訊與智慧城市、物聯網及交通之整合應用。', iconName: 'Cpu' },
-  { id: 't6', title: '數位城市與資訊服務', description: '3D 城市建模、數位孿生與空間數據服務平台。', iconName: 'Globe' },
-  { id: 't7', title: '環境永續與韌性防災', description: '空間資訊技術在氣候變遷與永續發展之應用。', iconName: 'Shield' },
-  { id: 't8', title: '衛星遙測與海洋測繪', description: '多光譜衛星影像分析、水下地形與海岸變遷。', iconName: 'Database' },
-  { id: 't9', title: '國土政策與規劃治理', description: '空間資訊支援國土計畫、城鄉發展與土地管理。', iconName: 'Map' },
-  { id: 't10', title: 'International Session', description: 'Cross-Cutting International Research and Case Studies.', iconName: 'Globe' },
+  {
+    id: "t1",
+    title: "大地測量與導航技術",
+    description: "衛星定位、重力測量、導航演算法與應用。",
+    iconName: "Map",
+  },
+  {
+    id: "t2",
+    title: "車載測繪與室內定位",
+    description: "行動測繪系統(MMS)、室內圖資建置與定位技術。",
+    iconName: "Zap",
+  },
+  {
+    id: "t3",
+    title: "無人載具與災害調查",
+    description: "UAV 應用於地形監測、災情判別與風險管理。",
+    iconName: "Shield",
+  },
+  {
+    id: "t4",
+    title: "攝影測量與測繪管理",
+    description: "數位攝影測量、影像匹配與測繪法規標準管理。",
+    iconName: "Database",
+  },
+  {
+    id: "t5",
+    title: "智慧科技與跨域應用",
+    description: "空間資訊與智慧城市、物聯網及交通之整合應用。",
+    iconName: "Cpu",
+  },
+  {
+    id: "t6",
+    title: "數位城市與資訊服務",
+    description: "3D 城市建模、數位孿生與空間數據服務平台。",
+    iconName: "Globe",
+  },
+  {
+    id: "t7",
+    title: "環境永續與韌性防災",
+    description: "空間資訊技術在氣候變遷與永續發展之應用。",
+    iconName: "Shield",
+  },
+  {
+    id: "t8",
+    title: "衛星遙測與海洋測繪",
+    description: "多光譜衛星影像分析、水下地形與海岸變遷。",
+    iconName: "Database",
+  },
+  {
+    id: "t9",
+    title: "國土政策與規劃治理",
+    description: "空間資訊支援國土計畫、城鄉發展與土地管理。",
+    iconName: "Map",
+  },
+  {
+    id: "t10",
+    title: "International Session",
+    description: "Cross-Cutting International Research and Case Studies.",
+    iconName: "Globe",
+  },
 ];
 
 export const AI_SYSTEM_INSTRUCTION = `

@@ -1,3 +1,4 @@
+"use client";
 import { TIMELINE_DATA } from "@/lib/constants";
 import React from "react";
 import SectionTitle from "./SectionTitle";
