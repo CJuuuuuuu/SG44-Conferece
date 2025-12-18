@@ -132,11 +132,11 @@ DATABASES = {
     }
 }
 
-# 如果有設定 DATABASE_URL 環境變數，則使用它（PostgreSQL）
-database_url = config('DATABASE_URL', default=None)
-if database_url:
+# 如果有 Zeabur 的 PostgreSQL 環境變數，則使用它
+postgres_url = config('POSTGRES_CONNECTION_STRING', default=None)
+if postgres_url:
     DATABASES['default'] = dj_database_url.parse(
-        database_url,
+        postgres_url,
         conn_max_age=600,
         conn_health_checks=True,
     )
