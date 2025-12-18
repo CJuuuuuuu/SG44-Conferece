@@ -22,6 +22,9 @@ ALLOWED_HOSTS = [
 
 # Application definition
 INSTALLED_APPS = [
+    'unfold',  # ← Unfold 必須在 admin 之前
+    'unfold.contrib.filters',  # 可選：進階過濾器
+    'unfold.contrib.forms',    # 可選：表單增強
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -166,3 +169,40 @@ if not DEBUG:
     X_FRAME_OPTIONS = 'DENY'
 
 
+# ==================== Unfold Admin 設定 ====================
+
+UNFOLD = {
+    "SITE_TITLE": "SG44 會議管理",
+    "SITE_HEADER": "SG44 Conference",
+    "SITE_URL": "/",
+    
+    "SITE_SYMBOL": "speed",  # Google Material Icon
+    
+    "SHOW_HISTORY": True,
+    "SHOW_VIEW_ON_SITE": True,
+    
+    "THEME": "light",  # light 或 dark
+    
+    # 自訂主色調（可選）
+    "COLORS": {
+        "primary": {
+            "50": "239 246 255",
+            "100": "219 234 254",
+            "200": "191 219 254",
+            "300": "147 197 253",
+            "400": "96 165 250",
+            "500": "59 130 246",
+            "600": "37 99 235",
+            "700": "29 78 216",
+            "800": "30 64 175",
+            "900": "30 58 138",
+            "950": "23 37 84",
+        },
+    },
+    
+    # 側邊欄設定
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+    },
+}
