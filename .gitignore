@@ -1,5 +1,3 @@
-# 在 sg44-conference/ 目錄下
-cat > .gitignore << 'EOF'
 # Python
 __pycache__/
 *.py[cod]
